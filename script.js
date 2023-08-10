@@ -1,23 +1,21 @@
 function calculateMinCost() {
-	let CONTAINER = document.getElementById('result');
-	if (CONTAINER !== '') {
-		return;
-	}
   //your code here
-	let str = document.getElementById('rope-lengths').value;
-    let arr = str.split(',');
-	let numArr = arr.map((ele) => {
-		return parseInt(ele);
-	})
-	let cost = 0;
-	while(numArr.length > 1){
-		numArr.sort((a,b) => a-b);
-		cost += (numArr[0]+numArr[1]);
-		numArr.shift();
-		numArr.shift();
-		numArr.push(cost);
-	} 
-	
-	CONTAINER.appendChild(cost);
-	return cost;
+	const div=document.getElementById("result");
+  const input=document.getElementById("rope-lengths")
+	let text=input.value;
+	let array = text.split(",").map(function (num) {
+		return parseInt(num);
+	});
+	let minCost=0;
+	while(array.length>1){
+	 array.sort((a, b) => a - b);
+		//console.log(array);
+		let sum=array.shift()+array.shift();
+		minCost+=sum
+		array.push(sum);
+	}
+	console.log(minCost);
+	div.innerText=minCost;
+	//p.innerText="result: "+minCost;
+	//div.appendChild(p);
 }  
